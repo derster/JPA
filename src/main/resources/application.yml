@@ -1,12 +1,27 @@
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/data_jpa
+#    username: postgres
+#    password: passpass
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    database: postgresql
+#    show-sql: true
+#    open-in-view: true
+#server:
+#  port: 8081
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/data_jpa
-    username: postgres
+    url: jdbc:mysql://localhost:3306/data_jpa?createDatabaseIfNotExist=true
+    username: root
     password: passpass
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create
-    database: postgresql
+      ddl-auto: update
+    database: mysql
     show-sql: true
-    open-in-view: true
+server:
+  port: 8081

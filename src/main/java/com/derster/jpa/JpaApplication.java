@@ -3,12 +3,15 @@ package com.derster.jpa;
 import com.derster.jpa.models.Author;
 import com.derster.jpa.models.Video;
 import com.derster.jpa.repositories.AuthorRepository;
+import com.derster.jpa.repositories.AuthorSpecification;
 import com.derster.jpa.repositories.VideoRepository;
 import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.time.ZoneId;
 import java.util.Date;
@@ -36,11 +39,12 @@ public class JpaApplication {
 						.createdAt(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime())
 						.age(faker.number().numberBetween(25, 60))
 						.build();
-				authorRepository.save(author);
+				//authorRepository.save(author);
 
 			}
 
 
+			 /*
 			var author = Author.builder()
 					.id(7)
 					.firstName("Modeste")
@@ -50,15 +54,16 @@ public class JpaApplication {
 					.age(39)
 					.build();
 			authorRepository.save(author);
+			*/
 
 			//authorRepository.updateAuthor(34, 1);
 
 			//authorRepository.updateAuthorAge(55);
-			List<Author> byNamedQuery = authorRepository.findByNamedQuery(10);
+			//List<Author> byNamedQuery = authorRepository.findByNamedQuery(10);
 
-			byNamedQuery.forEach(System.out::println);
+			//byNamedQuery.forEach(System.out::println);
 
-			authorRepository.updateByNameQuery(45);
+			//authorRepository.updateByNameQuery(45);
 
 
 
@@ -80,6 +85,18 @@ public class JpaApplication {
 					.name("abc")
 					.build();
 			videoRepository.save(video);*/
+
+
+			/*Specification<Author> specification = Specification
+					.where(AuthorSpecification.hasAge(34))
+					.and(AuthorSpecification.firstnameLike("m"));
+
+
+			List<Author> authors = authorRepository.findAll( spec);
+
+			authors.forEach(System.out::println);*/
+
+
 		};
 	}
 
